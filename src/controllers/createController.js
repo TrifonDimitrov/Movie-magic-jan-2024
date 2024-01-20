@@ -8,8 +8,10 @@ router.get('/create', (req, res) => {
 
 router.post('/create', (req, res) => {
    const data = req.body;
+
    movieService.create(data);
-   res.send('')
+
+   res.redirect('/');
 });
 
 
