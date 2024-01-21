@@ -1,4 +1,5 @@
 const movies = [{
+_id: 1,
 title: 'Matrix',
 genre: 'action',
 director: 'Myrphy',
@@ -13,6 +14,6 @@ exports.getAll = () => {
 };
 
 exports.create = (movieData) => {
-    console.log(movieData);
+    movieData._Id = movies[movies.length - 1]._Id + 1;
     movies.push(movieData);
 };
