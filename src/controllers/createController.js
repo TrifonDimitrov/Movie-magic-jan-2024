@@ -6,12 +6,21 @@ router.get('/create', (req, res) => {
     res.render('create')
 });
 
-router.post('/create', (req, res) => {
-   const data = req.body;
+router.post('/create', async (req, res) => {
+    const newMovie = req.body;
 
-   movieService.create(data);
+    try {
 
-   res.redirect('/');
+        await movieService.create(newMovie);
+
+        res.redirect('/');
+
+    } catch (error) {
+        console.log(error.message);
+        res.redirect('/create')
+    }
+
+
 });
 
 router.get('/details/:movieId', (req, res) => {
@@ -20,7 +29,7 @@ router.get('/details/:movieId', (req, res) => {
 
     movie.rating = new Array(Number(movie.rating)).fill(true);
 
-    res.render('details', {movie});
+    res.render('details', { movie });
 
 });
 
