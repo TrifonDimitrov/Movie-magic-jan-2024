@@ -7,6 +7,7 @@ const castSchema = new mongoose.Schema({
     },
     age: {
         type: Number,
+        required: true,
         min: 0,
         max: 100,
     },
@@ -14,14 +15,14 @@ const castSchema = new mongoose.Schema({
         type: String,
         required: true,
     },
-    nameInMovies: {
+    nameInMovie: {
         type: String,
         required: true,
     },
-    castImages: {
+    castImage: {
         type: String,
         required: true,
-        validation: /^https?:\/\//,
+        match: /^https?:\/\//,
     },
     
 });
