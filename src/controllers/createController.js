@@ -2,6 +2,7 @@ const router = require('express').Router();
 
 const movieService = require('../services/movieService');
 const castService = require('../services/castService');
+const { log } = require('console');
 
 router.get('/create', (req, res) => {
     res.render('create')
@@ -29,7 +30,6 @@ router.get('/details/:movieId', async (req, res) => {
     const movie = await movieService.getOne(movieId).lean();
    // const casts = await castService.getByIds(movie.casts).lean();
     
-
     movie.rating = new Array(Number(movie.rating)).fill(true);
 
     res.render('details', { movie });

@@ -1,5 +1,5 @@
 const Movie = require('../models/Movie');
-const Cast = require('../models/Cast');
+const Cast = require('../models/cast');
 
 exports.getAll = () => Movie.find();
 
@@ -22,7 +22,7 @@ exports.search = async (title, genre, year) => {
     return result;
 };
 
-exports.getOne = (movieId) => Movie.findById(movieId);
+exports.getOne = (movieId) => Movie.findById(movieId).populate('casts'); // populate - vzemane na vsichki danni ot drugata tablica
 
 exports.create = (movieData) => Movie.create(movieData);
 

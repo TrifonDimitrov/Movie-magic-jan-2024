@@ -36,7 +36,7 @@ const movieSchema = new mongoose.Schema({
         match: /^https?:\/\//,
     },
     casts: [{
-        type: mongoose.Types.ObjectId,
+        type: mongoose.Types.ObjectId,   // relaciq mejdu dvata modela
         ref: 'Cast'
     }]
 });
