@@ -30,11 +30,15 @@ const movieSchema = new mongoose.Schema({
         required: true,
         maxLength: 1000,
     },
-    imageURL: {
+    imageUrl: {
         type: String,
-        required: true,
-        match: /[a-z?]/,
+        
+        match: /^https?:\/\//,
     },
+    casts: [{
+        type: mongoose.Types.ObjectId,
+        ref: 'Cast'
+    }]
 });
 
 
