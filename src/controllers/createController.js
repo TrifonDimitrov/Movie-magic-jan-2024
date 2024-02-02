@@ -2,7 +2,7 @@ const router = require('express').Router();
 
 const movieService = require('../services/movieService');
 const castService = require('../services/castService');
-const { log } = require('console');
+
 
 router.get('/create', (req, res) => {
     res.render('create')
