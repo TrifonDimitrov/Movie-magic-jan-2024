@@ -22,6 +22,13 @@ userSchema.pre('save', async function () {
     this.password = hash;
 });
 
+userSchema.virtual('rePassword')
+    .set(function (value) {
+        if (this.password !== value) {
+            throw new Error('Password don\'t match');
+        }
+    });
+
 const User = model('User', userSchema);
 
 module.exports = User;  // export the model to be used in other files
