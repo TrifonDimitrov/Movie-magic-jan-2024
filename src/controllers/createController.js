@@ -8,11 +8,11 @@ const {isAuth} = require('../middleweres/authMiddlewere');
 router.get('/details/:movieId', async (req, res) => {
     const movieId = req.params.movieId;
     const movie = await movieService.getOne(movieId).lean();
-    // const casts = await castService.getByIds(movie.casts).lean();
+    
 
     movie.rating = new Array(Number(movie.rating)).fill(true);
 
-    res.render('details', { movie });
+    res.render('movie/details', { movie });
 
 });
 
