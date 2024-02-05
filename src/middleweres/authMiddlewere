@@ -1,0 +1,34 @@
+const jwt = require('../lib/jwt');
+const {SECRET} = require('../config/configSecret');
+
+// Check if the user is logged in
+exports.auth = async (req, res, next) => {
+    const token = req.cookies['auth'];
+
+    if (!token) {
+        // if there is no token, the user is not logged in. Next like a guest.
+        return next();
+    }
+
+    try {
+        // if there is a token, verify it
+        const decodedToken = await jwt.verify(token, SECRET);
+
+        req.user = decodedToken;
+        next();
+
+    } catch (error) {
+        // if the token is not valid, the user is not logged in. Next like a guest.
+        res.clearCookie('auth');
+        res.redirect('/login');
+        
+    }
+
+};
+
+exports.isAuth = (req, res, next) => {
+    if (!req.user) {
+        return res.redirect('/auth/login');
+    }
+    next();
+};
