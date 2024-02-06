@@ -34,7 +34,8 @@ exports.attachCast = async (movieId, castId) => {
     return movie.save();
 
 };
-// return Movie.findByIdAndUpdate(movieId, { $addToSet: { cast: castId } })
+
+exports.delete = (movieId) => Movie.findByIdAndDelete(movieId);
 
 
 
