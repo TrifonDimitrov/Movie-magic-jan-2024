@@ -38,7 +38,11 @@ const movieSchema = new mongoose.Schema({
     casts: [{
         type: mongoose.Types.ObjectId,   // relaciq mejdu dvata modela
         ref: 'Cast'
-    }]
+    }],
+    owner: {
+        type: mongoose.Types.ObjectId,
+        ref: 'User'
+    },
 });
 
 
