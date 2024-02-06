@@ -8,7 +8,8 @@ const {isAuth} = require('../middleweres/authMiddlewere');
 router.get('/details/:movieId', async (req, res) => {
     const movieId = req.params.movieId;
     const movie = await movieService.getOne(movieId).lean();
-    const isOwner = req.user._id == movie.owner;
+    const isOwner = req.user?._id == movie.owner;
+    
     
 
     movie.rating = new Array(Number(movie.rating)).fill(true);
