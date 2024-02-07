@@ -44,9 +44,12 @@
                 <h3>Name in Movie: {{nameInMovie}}</h3>
             </div>
         </div>
-        {{else}}
-        <h2>There are no casts for this movie yet...</h2>
+         {{else}}
+        <div class="main-cast-card">
+            <div class="no-cast">
+                <p>There are no casts added yet...</p>
+            </div>
+        </div>
         {{/each}}
     </div>
-
 </section>

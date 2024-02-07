@@ -26,6 +26,8 @@ exports.getOne = (movieId) => Movie.findById(movieId).populate('casts'); // popu
 
 exports.create = (movieData) => Movie.create(movieData);
 
+exports.edit = (movieId, editedMovie) => Movie.findByIdAndUpdate(movieId, editedMovie);
+
 exports.attachCast = async (movieId, castId) => {
     const movie = await this.getOne(movieId);
 
